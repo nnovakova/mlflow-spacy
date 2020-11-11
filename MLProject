@@ -1,0 +1,14 @@
+name: NER Medical Entities
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:      
+      drop_rate: {type: float, default: 0.2}
+      iterations: {type: int, default: 20}
+    command: "python train_ner_model.py -d {drop_rate} -i {iterations}"
+  test:
+    parameters:
+      run_id: {type: string}
+    command: "python test_ner_model.py -r {run_id}"
